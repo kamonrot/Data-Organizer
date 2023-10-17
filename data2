@@ -1,0 +1,26 @@
+import csv
+import random
+
+# Define the possible values for Product brand and Type of Cloths
+product_brands = ["Brand A", "Brand B", "Brand C", "Brand D"]
+clothing_types = ["T-Shirt", "Jeans", "Dress", "Jacket", "Shoes"]
+
+# Generate random data for 200 rows
+data = []
+
+for _ in range(200):
+    product_brand = random.choice(product_brands)
+    clothing_type = random.choice(clothing_types)
+    sale = random.randint(300, 590)
+    profit = random.randint(200, 450)
+    data.append([product_brand, clothing_type, sale, profit])
+
+# Write the data to a CSV file
+with open('clothing.csv', 'w', newline='') as csvfile:
+    csv_writer = csv.writer(csvfile)
+    
+    # Write the header row
+    csv_writer.writerow(["Product_brand", "Type", "Sale", "Profit"])
+    
+    # Write the data
+    csv_writer.writerows(data)
